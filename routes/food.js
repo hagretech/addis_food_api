@@ -33,7 +33,6 @@ router.get('/:company_id', async(req, res) => {
                     });
             })
             .catch(err => { console.log(err) })
-        console.log(company)
 
     })
     // get food by tag
