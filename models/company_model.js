@@ -2,13 +2,19 @@ const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 
-const hotelSchema = new mongoose.Schema({
-    email: {
+const companySchema = new mongoose.Schema({
+    name: {
         type: String,
-        required: [true, 'Please enter an email'],
+        required: true,
         unique: true,
-        lowercase: true,
-        validate: [isEmail, 'Please enter a valid email']
+    },
+    address: {
+        type: String,
+        required: [true, 'Please enter an address'],
+    },
+    catagory: {
+        type: Array,
+        require: [true, 'please add catagory']
     },
     password: {
         type: String,
@@ -19,25 +25,25 @@ const hotelSchema = new mongoose.Schema({
 
 
 // fire a function before doc saved to db
-hotelSchema.pre('save', async function(next) {
+companySchema.pre('save', async function(next) {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
     next();
 });
 
 // static method to login user
-hotelSchema.statics.login = async function(email, password) {
-    const user = await this.findOne({ email });
-    if (user) {
-        const auth = await bcrypt.compare(password, user.password);
+companySchema.statics.login = async function(name, password) {
+    const company = await this.findOne({ name });
+    if (company) {
+        const auth = await bcrypt.compare(password, company.password);
         if (auth) {
-            return user;
+            return company;
         }
         throw Error('incorrect password');
     }
     throw Error('incorrect email');
 };
 
-const Hotel = mongoose.model('user', hotelSchema);
+const Company = mongoose.model('company', companySchema);
 
-module.exports = Hotel;
+module.exports = Company;
