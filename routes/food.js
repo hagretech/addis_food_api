@@ -22,8 +22,8 @@ router.post('/', async(req, res) => {
 
 
 
-/* GET companies list. */
-router.get('/:company_id', (req, res, ) => {
+/* GET foods form companies. */
+router.get('/company/:company_id', (req, res, ) => {
     var company_id = req.params.company_id
     comp = Company.findById(company_id)
         .then(company => {
@@ -39,7 +39,6 @@ router.get('/:company_id', (req, res, ) => {
 });
 
 // get foodby catagory
-
 router.get('/catagory/:cat', (req, res) => {
     var cat = req.params.cat;
     foods = Food.find({ 'catagory': cat })
@@ -52,7 +51,7 @@ router.get('/catagory/:cat', (req, res) => {
 })
 
 // get food with price range
-router.get('/price/range', (req, res) => {
+router.get('/range', (req, res) => {
     const from = req.query.from;
     const upto = req.query.upto
     console.log('*******************', from, upto)
@@ -66,16 +65,30 @@ router.get('/price/range', (req, res) => {
 
 })
 
+// get food by hashtag
+router.get('/tag/:tag', (req, res) => {
+    const tag = req.params.tag
+    console.log(tag)
+    const food = Food.find({ "tag": tag })
+        .then(foods => {
+            res.json({ foods })
+        })
+        .catch(err => {
+            res.json(err)
+        })
+
+})
+
 module.exports = router;
 
 // TO DO
 
-
-
-// 👉 Search foods By hashtag
+// auth for compnaies routes
+// restict compnay endpoints
 
 // DONE 
 
+// 👉 Search foods By hashtag
 // 👉 Get All restaurants 
 // 👉 Get Single Restaurant Information By ID
 // 👉 Search Foods By Category

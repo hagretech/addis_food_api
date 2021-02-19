@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 // middlewere 
 const createJSONToken = require('../middlewares/jsonWebTokenCreator')
     //models
-const hotel_model = require('../models/hotel_model');
+const Company = require('../models/company_model');
 
 // handle errors
 const handleErrors = (err) => {
@@ -53,32 +53,13 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-
-// post requests
-
-// post signup 
-router.post('/signup', async(req, res) => {
-    const { email, password } = req.body;
-    console.log("your info is made ", email, password)
-    try {
-        const hotel = await hotel_model.create({ email, password, phone, address });
-        const token = createJSONToken(user._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json({ user: hotel._id });
-    } catch (err) {
-        const errors = handleErrors(err);
-        res.status(400).json({ errors });
-    }
-
-});
-
 // login post
 router.post('/login', async(req, res) => {
     const maxAge = 3 * 24 * 60 * 60;
-    const { email, password } = req.body;
+    const { name, password } = req.body;
     res.cookie('jwt', '', { maxAge: 1 });
     try {
-        const user = await User.login(email, password);
+        const company = await Company.login(name, password);
         var token = '';
         token = createJSONToken(user._id);
         console.log('!!! trying to log', user, 'token', token)
@@ -92,7 +73,7 @@ router.post('/login', async(req, res) => {
 
 
 // logout
-router.get('logout', logout_get = (req, res) => {
+router.get('/logout', logout_get = (req, res) => {
     res.cookie('jwt', '', { maxAge: 1 });
     res.redirect('/');
 });

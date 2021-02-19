@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 
 const companySchema = new mongoose.Schema({
@@ -12,15 +11,11 @@ const companySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter an address'],
     },
-    catagory: {
-        type: Array,
-        require: [true, 'please add catagory']
-    },
     password: {
         type: String,
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters'],
-    },
+    }
 });
 
 
@@ -41,7 +36,7 @@ companySchema.statics.login = async function(name, password) {
         }
         throw Error('incorrect password');
     }
-    throw Error('incorrect email');
+    throw Error('incorrect name');
 };
 
 const Company = mongoose.model('company', companySchema);

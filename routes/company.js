@@ -16,7 +16,6 @@ router.post('/', async(req, res) => {
     }
 })
 
-
 /* GET companies list. */
 router.get('/', async(req, res) => {
     comp = Company.find().sort({ createdAt: -1 })

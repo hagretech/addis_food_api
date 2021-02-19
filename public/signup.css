@@ -1,0 +1,135 @@
+@import url('https://css.gg/home.css');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.heading {
+    position: relative;
+    margin-top: 70px;
+    margin-right: 30px;
+    text-align: right;
+    font: normal normal bold 50px/71px Microsoft PhagsPa;
+    color: #2B0565;
+}
+
+form {
+    margin-top: 50px;
+    display: flex;
+    @import url('https://css.gg/home.css');
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    .heading {
+        position: relative;
+        margin-top: 70px;
+        margin-right: 30px;
+        text-align: right;
+        font: normal normal bold 50px/71px Microsoft PhagsPa;
+        color: #2B0565;
+    }
+    form {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .formrow {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .formrow label {
+        color: var(--unnamed-color-2b0565);
+        text-align: left;
+        font: normal normal normal 14px/18px Microsoft PhagsPa;
+        letter-spacing: 0px;
+        color: #2B0565;
+        opacity: 1;
+        margin-bottom: 10px;
+    }
+    .formrow input {
+        width: 80vw;
+        height: 35px;
+        border: 1px solid #2B0565;
+        border-radius: 10px;
+        outline: none;
+        padding-left: 10px;
+    }
+    .formrow button {
+        outline: none;
+        width: 120px;
+        height: 40px;
+        margin-top: 20px;
+        background: #2B0565;
+        border: 0px solid #2B0565;
+        border-radius: 20px;
+        color: #fff;
+        font: normal normal normal 17px/22px Microsoft PhagsPa;
+    }
+    a {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        text-align: center;
+    }
+    .log {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        color: #2B0565;
+    }
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.formrow label {
+    color: var(--unnamed-color-2b0565);
+    text-align: left;
+    font: normal normal normal 14px/18px Microsoft PhagsPa;
+    letter-spacing: 0px;
+    color: #2B0565;
+    opacity: 1;
+    margin-bottom: 10px;
+}
+
+.formrow input {
+    width: 80vw;
+    height: 35px;
+    border: 1px solid #2B0565;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+}
+
+.formrow button {
+    outline: none;
+    width: 120px;
+    height: 40px;
+    margin-top: 20px;
+    background: #2B0565;
+    border: 0px solid #2B0565;
+    border-radius: 20px;
+    color: #fff;
+    font: normal normal normal 17px/22px Microsoft PhagsPa;
+}
+
+a {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.log {
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    color: #2B0565;
+}
