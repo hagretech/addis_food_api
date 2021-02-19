@@ -1,0 +1,85 @@
+var express = require('express');
+const { format } = require('morgan');
+var router = express.Router();
+// models
+var Company = require('../models/company_model')
+var Food = require('../models/food_model')
+
+// add food
+router.post('/', async(req, res) => {
+    const { name, price, tag, catagory, company_id, } = req.body;
+    console.log("your info is made ", name, catagory, )
+    try {
+        const food = await Food.create({ name, price, catagory, tag, company_id });
+        res.status(201).json({ food });
+    } catch (err) {
+        //const errors = handleErrors(err);
+        res.status(400).json({ err });
+    }
+})
+
+// get food with compnay id
+
+
+
+/* GET companies list. */
+router.get('/:company_id', (req, res, ) => {
+    var company_id = req.params.company_id
+    comp = Company.findById(company_id)
+        .then(company => {
+            food = Food.find({ company_id })
+                .then(foods => {
+                    res.json({ company, foods })
+                })
+                .catch(err => { res.json(err) })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
+// get foodby catagory
+
+router.get('/catagory/:cat', (req, res) => {
+    var cat = req.params.cat;
+    foods = Food.find({ 'catagory': cat })
+        .then(foods => {
+            res.json(foods)
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+// get food with price range
+router.get('/price/range', (req, res) => {
+    const from = req.query.from;
+    const upto = req.query.upto
+    console.log('*******************', from, upto)
+    const food = Food.find({ "price": { "$gt": from, "$lt": upto } })
+        .then(foods => {
+            res.json({ foods })
+        })
+        .catch(err => {
+            res.json(err)
+        })
+
+})
+
+module.exports = router;
+
+// TO DO
+
+
+
+// 👉 Search foods By hashtag
+
+// DONE 
+
+// 👉 Get All restaurants 
+// 👉 Get Single Restaurant Information By ID
+// 👉 Search Foods By Category
+// 👉 Search Foods By The Name
+// 👉 Search Foods  With A Price of  100 Birr or Less 
+// 👉 Search Foods  With A Price of 100 Birr - 200 Birr
+// 👉 Search Foods  With A Price of  200 Birr or more

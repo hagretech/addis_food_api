@@ -18,7 +18,7 @@ router.post('/', async(req, res) => {
 
 
 /* GET companies list. */
-router.get('/', (req, res, ) => {
+router.get('/', async(req, res) => {
     comp = Company.find().sort({ createdAt: -1 })
         .then(result => {
             res.json({ compnaies: result });
@@ -27,6 +27,8 @@ router.get('/', (req, res, ) => {
             console.log(err);
         });
 });
+
+
 
 module.exports = router;
 
