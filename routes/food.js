@@ -79,12 +79,29 @@ router.get('/tag/:tag', (req, res) => {
 
 })
 
+// get food by name
+router.get('/name/:name', (req, res) => {
+    const name = req.params.name
+    console.log(name)
+    const food = Food.find({ "tag": name })
+        .then(foods => {
+            res.json({ foods })
+        })
+        .catch(err => {
+            res.json(err)
+        })
+
+})
+
 module.exports = router;
 
 // TO DO
 
 // auth for compnaies routes
 // restict compnay endpoints
+
+// company description 
+// search by name
 
 // DONE 
 

@@ -11,6 +11,10 @@ const companySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter an address'],
     },
+    description: {
+        type: String,
+        required: [true, "please enter an address"]
+    },
     password: {
         type: String,
         required: [true, 'Please enter a password'],

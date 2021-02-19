@@ -5,10 +5,10 @@ var Company = require('../models/company_model')
 
 // add companies
 router.post('/', async(req, res) => {
-    const { name, address, catagory, password } = req.body;
+    const { name, address, catagory, description, password } = req.body;
     console.log("your info is made ", name, address, catagory, password)
     try {
-        const company = await Company.create({ name, address, catagory, password });
+        const company = await Company.create({ name, address, catagory, description, password });
         res.status(201).json({ company });
     } catch (err) {
         //const errors = handleErrors(err);
