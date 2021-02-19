@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const body_parser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors')
 
 // imported routes
 const company_auth_route = require('./routes/company_auth');
@@ -20,6 +21,7 @@ app.use(body_parser.json());
 app.use(cookieParser());
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(cors())
 
 // view engine
 app.set('view engine', 'ejs');
