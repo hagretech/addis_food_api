@@ -34,7 +34,7 @@ router.get('/company/:company_id', (req, res, ) => {
     var company_id = req.params.company_id
     comp = Company.findById(company_id)
         .then(company => {
-            food = Food.find()
+            food = Food.find(company_id)
                 .then(foods => {
                     res.json({ company, foods })
                 })
