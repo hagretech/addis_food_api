@@ -14,7 +14,8 @@ router.post('/', async(req, res) => {
             .then(async company => {
                 const company_name = company.name;
                 const company_address = company.address;
-                const food = await Food.create({ name, price, catagory, tag, company_id, company_address, company_name });
+                tags = tag.split(' ');
+                const food = await Food.create({ name, price, catagory, "tag": tags, company_id, company_address, company_name });
                 res.status(201).json({ food });
             })
 
